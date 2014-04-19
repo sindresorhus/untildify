@@ -1,0 +1,32 @@
+{
+  "name": "untildify",
+  "version": "0.0.0",
+  "description": "Convert a tilde path to an absolute path: ~/dev => /Users/sindresorhus/dev",
+  "license": "MIT",
+  "repository": "sindresorhus/untildify",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "tilde",
+    "path",
+    "home",
+    "dir",
+    "directory",
+    "expand"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
