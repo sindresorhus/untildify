@@ -1,8 +1,8 @@
 'use strict';
-var assert = require('assert');
-var untildify = require('./index');
+var test = require('ava');
+var untildify = require('./');
 
-it('should convert tilde path to absolute path', function () {
+test(function (t) {
 	process.env.HOME = '/Users/sindresorhus';
-	assert.equal(untildify('~/dev'), '/Users/sindresorhus/dev');
+	t.assert(untildify('~/dev') === '/Users/sindresorhus/dev');
 });

@@ -13,20 +13,25 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node test.js"
   },
   "files": [
     "index.js"
   ],
   "keywords": [
     "tilde",
+    "untildify",
     "path",
     "home",
     "dir",
     "directory",
-    "expand"
+    "expand",
+    "user"
   ],
+  "dependencies": {
+    "user-home": "^1.0.0"
+  },
   "devDependencies": {
-    "mocha": "*"
+    "ava": "0.0.3"
   }
 }
