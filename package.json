@@ -9,6 +9,9 @@
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
+  "contributors": [
+    "silverwind <me@silverwind.io> (https://silverwind.io)"
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
@@ -20,13 +23,16 @@
   ],
   "keywords": [
     "tilde",
+    "expansion",
+    "expand",
     "untildify",
     "path",
     "home",
     "dir",
     "directory",
-    "expand",
-    "user"
+    "user",
+    "shell",
+    "bash"
   ],
   "dependencies": {
     "user-home": "^1.0.0"
