@@ -8,6 +8,8 @@ test(function (t) {
 	t.assert(untildify(fixture) !== fixture);
 	t.assert(!/^~$/.test(untildify('~')));
 	t.assert(/^~abc$/.test(untildify('~abc')));
+	t.assert(/.+\/$/.test(untildify('~/')));
+	t.assert(/.+\\$/.test(untildify('~\\')));
 	t.assert(/.+\/abc$/.test(untildify('~/abc')));
 	t.assert(/.+\\abc$/.test(untildify('~\\abc')));
 });
