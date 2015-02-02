@@ -5,5 +5,6 @@ module.exports = function (str) {
 	if (typeof str !== 'string') {
 		throw new TypeError('Expected a string');
 	}
-	return userHome ? str.replace(/^(~)($|\/|\\)/, userHome + "$2") : str;
+
+	return userHome ? str.replace(/^~($|\/|\\)/, userHome + '$1') : str;
 };

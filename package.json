@@ -38,6 +38,6 @@
     "user-home": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "0.0.3"
+    "ava": "0.0.4"
   }
 }
