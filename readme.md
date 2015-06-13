@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save untildify
 ```
 
@@ -16,7 +16,7 @@ $ npm install --save untildify
 var untildify = require('untildify');
 
 untildify('~/dev');
-//=> /Users/sindresorhus/dev
+//=> '/Users/sindresorhus/dev'
 ```
 
 

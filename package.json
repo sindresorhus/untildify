@@ -7,7 +7,7 @@
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "url": "sindresorhus.com"
   },
   "contributors": [
     "silverwind <me@silverwind.io> (https://silverwind.io)"
@@ -35,7 +35,7 @@
     "bash"
   ],
   "dependencies": {
-    "user-home": "^1.0.0"
+    "os-homedir": "^1.0.0"
   },
   "devDependencies": {
     "ava": "0.0.4"
