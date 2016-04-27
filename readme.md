@@ -13,7 +13,7 @@ $ npm install --save untildify
 ## Usage
 
 ```js
-var untildify = require('untildify');
+const untildify = require('untildify');
 
 untildify('~/dev');
 //=> '/Users/sindresorhus/dev'
@@ -27,4 +27,4 @@ See [tildify](https://github.com/sindresorhus/tildify) for the inverse.
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
