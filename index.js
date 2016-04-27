@@ -1,11 +1,11 @@
 'use strict';
-var osHomedir = require('os-homedir');
-var home = osHomedir();
+const osHomedir = require('os-homedir');
+const home = osHomedir();
 
-module.exports = function (str) {
+module.exports = str => {
 	if (typeof str !== 'string') {
 		throw new TypeError('Expected a string');
 	}
 
-	return home ? str.replace(/^~($|\/|\\)/, home + '$1') : str;
+	return home ? str.replace(/^~($|\/|\\)/, `${home}$1`) : str;
 };
