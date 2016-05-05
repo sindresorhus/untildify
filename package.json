@@ -34,9 +34,6 @@
     "shell",
     "bash"
   ],
-  "dependencies": {
-    "os-homedir": "^1.0.0"
-  },
   "devDependencies": {
     "ava": "*",
     "xo": "*"
