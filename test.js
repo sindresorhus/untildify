@@ -14,4 +14,8 @@ test(t => {
 	t.true(/.+\\abc\\def$/.test(m('~\\abc\\def')));
 	t.true(/.+\/abc\\def$/.test(m('~/abc\\def')));
 	t.true(/.+\\abc\/def$/.test(m('~\\abc/def')));
+
+    /* Allow passthrough regex variables. */
+	t.false(/^~\$1$/.test(m('~$1')));
+	t.false(/^~\/\$1$/.test(m('~/$1')));
 });
