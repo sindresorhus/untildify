@@ -8,11 +8,11 @@ module.exports = str => {
 		throw new TypeError(`Expected a string, got ${typeof str}`);
 	}
 
-	/* Only replace if followed by path delimiter or regex variable. */
+	/* Don't replace if tilde not followed by path delimiter or regex variable. */
 	if (/^~[^$$|\\|/]/.test(str)) {
 		return str;
 	}
 
-	/* If valid swap tilde. */
+	/* If valid, swap tilde. */
 	return str.replace(/^~/, `${home}`);
 };
