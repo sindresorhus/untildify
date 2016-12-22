@@ -1,5 +1,6 @@
 'use strict';
 const os = require('os');
+
 const home = os.homedir();
 
 module.exports = str => {
