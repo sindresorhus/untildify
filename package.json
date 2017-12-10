@@ -40,5 +40,8 @@
   },
   "xo": {
     "esnext": true
+  },
+  "dependencies": {
+    "is-windows": "^1.0.1"
   }
 }
