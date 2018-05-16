@@ -1,6 +1,6 @@
 'use strict';
-const os = require('os');
-const home = os.homedir();
+
+const home = require('os').homedir();
 
 module.exports = str => {
 	if (typeof str !== 'string') {
