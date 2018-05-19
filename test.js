@@ -23,6 +23,13 @@ test('operation with home dir', t => {
 	t.true(expandsTildePrefixWithHome('~\\abc/def'));
 });
 
+test('paths with regex replacement patterns', t => {
+	t.is(m('~$&'), '~$&');
+	t.is(m('~$1'), '~$1');
+	t.true(expandsTildePrefixWithHome('~/$1'));
+	t.true(expandsTildePrefixWithHome('~/$&'));
+});
+
 function expandsTildePrefixWithHome(tildePrefixedStr) {
 	return m(tildePrefixedStr) === MOCK_HOME + tildePrefixedStr.slice(1);
 }
