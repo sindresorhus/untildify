@@ -23,6 +23,14 @@ test('operation with home dir', t => {
 	t.true(expandsTildePrefixWithHome('~\\abc/def'));
 });
 
+test('operation without home dir', t => {
+	m.__set__('home', undefined);
+	t.is(m('~'), '~');
+	t.is(m('foo'), 'foo');
+	t.is(m('~abc'), '~abc');
+	t.is(m('~/dev'), '~/dev');
+});
+
 test('paths with regex replacement patterns', t => {
 	t.is(m('~$&'), '~$&');
 	t.is(m('~$1'), '~$1');
