@@ -12,7 +12,6 @@ test('operation with home dir', t => {
 	t.not(m('~'), '~');
 	t.not(m('~/dev'), '~/dev');
 	t.regex(m('~/dev'), /\/dev/);
-	t.is(m('~abc'), '~abc');
 	t.true(expandsTildePrefixWithHome('~/'));
 	t.true(expandsTildePrefixWithHome('~\\'));
 	t.true(expandsTildePrefixWithHome('~/abc'));
@@ -29,6 +28,14 @@ test('operation without home dir', t => {
 	t.is(m('foo'), 'foo');
 	t.is(m('~abc'), '~abc');
 	t.is(m('~/dev'), '~/dev');
+});
+
+test('paths where ~ is not current user\'s home dir', t => {
+	t.is(m('~abc'), '~abc');
+	t.is(m('/~/'), '/~/');
+	t.is(m('/~'), '/~');
+	t.is(m('abc~'), 'abc~');
+	t.true(expandsTildePrefixWithHome('~/abc~'));
 });
 
 test('paths with regex replacement patterns', t => {
