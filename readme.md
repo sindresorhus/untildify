@@ -1,12 +1,12 @@
 # untildify [![Build Status](https://travis-ci.org/sindresorhus/untildify.svg?branch=master)](https://travis-ci.org/sindresorhus/untildify)
 
-> Convert a tilde path to an absolute path: `~/dev` => `/Users/sindresorhus/dev`
+> Convert a tilde path to an absolute path: `~/dev` → `/Users/sindresorhus/dev`
 
 
 ## Install
 
 ```
-$ npm install --save untildify
+$ npm install untildify
 ```
 
 

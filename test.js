@@ -4,11 +4,11 @@ import rewire from 'rewire';
 const m = rewire('.');
 const MOCK_HOME = 'MOCK_HOME';
 
-const expandsTildePrefixWithHome = tildePrefixedString => m(tildePrefixedString) === MOCK_HOME + tildePrefixedString.slice(1);
+const expandsTildePrefixWithHome = path => m(path) === MOCK_HOME + path.slice(1);
 
 // Mock out the home directory for more accurate and explicit tests
 // eslint-disable-next-line ava/use-t
-test.beforeEach(_ => m.__set__('home', MOCK_HOME));
+test.beforeEach(() => m.__set__('home', MOCK_HOME));
 
 test('operation with home directory', t => {
 	t.not(m('~'), '~');

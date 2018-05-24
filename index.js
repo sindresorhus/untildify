@@ -1,11 +1,12 @@
 'use strict';
+const os = require('os');
 
-const home = require('os').homedir();
+const home = os.homedir();
 
-module.exports = str => {
-	if (typeof str !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof str}`);
+module.exports = input => {
+	if (typeof input !== 'string') {
+		throw new TypeError(`Expected a string, got ${typeof input}`);
 	}
 
-	return home ? str.replace(/^~(?=$|\/|\\)/, home) : str;
+	return home ? input.replace(/^~(?=$|\/|\\)/, home) : input;
 };
