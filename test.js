@@ -4,11 +4,13 @@ import rewire from 'rewire';
 const m = rewire('.');
 const MOCK_HOME = 'MOCK_HOME';
 
-// Mock out the home dir for more accurate and explicit tests
+const expandsTildePrefixWithHome = tildePrefixedString => m(tildePrefixedString) === MOCK_HOME + tildePrefixedStr.slice(1);
+
+// Mock out the home directory for more accurate and explicit tests
 // eslint-disable-next-line ava/use-t
 test.beforeEach(_ => m.__set__('home', MOCK_HOME));
 
-test('operation with home dir', t => {
+test('operation with home directory', t => {
 	t.not(m('~'), '~');
 	t.not(m('~/dev'), '~/dev');
 	t.regex(m('~/dev'), /\/dev/);
@@ -22,7 +24,7 @@ test('operation with home dir', t => {
 	t.true(expandsTildePrefixWithHome('~\\abc/def'));
 });
 
-test('operation without home dir', t => {
+test('operation without home directory', t => {
 	m.__set__('home', undefined);
 	t.is(m('~'), '~');
 	t.is(m('foo'), 'foo');
@@ -30,7 +32,7 @@ test('operation without home dir', t => {
 	t.is(m('~/dev'), '~/dev');
 });
 
-test('paths where ~ is not current user\'s home dir', t => {
+test('paths where ~ is not current user\'s home directory', t => {
 	t.is(m('~abc'), '~abc');
 	t.is(m('/~/'), '/~/');
 	t.is(m('/~'), '/~');
@@ -44,7 +46,3 @@ test('paths with regex replacement patterns', t => {
 	t.true(expandsTildePrefixWithHome('~/$1'));
 	t.true(expandsTildePrefixWithHome('~/$&'));
 });
-
-function expandsTildePrefixWithHome(tildePrefixedStr) {
-	return m(tildePrefixedStr) === MOCK_HOME + tildePrefixedStr.slice(1);
-}
