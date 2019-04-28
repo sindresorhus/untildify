@@ -3,10 +3,10 @@ const os = require('os');
 
 const home = os.homedir();
 
-module.exports = input => {
-	if (typeof input !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
+module.exports = pathWithTilde => {
+	if (typeof pathWithTilde !== 'string') {
+		throw new TypeError(`Expected a string, got ${typeof pathWithTilde}`);
 	}
 
-	return home ? input.replace(/^~(?=$|\/|\\)/, home) : input;
+	return home ? pathWithTilde.replace(/^~(?=$|\/|\\)/, home) : pathWithTilde;
 };
