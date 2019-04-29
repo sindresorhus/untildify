@@ -13,13 +13,14 @@
 		"silverwind <me@silverwind.io> (https://silverwind.io)"
 	],
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"tilde",
@@ -35,8 +36,9 @@
 		"bash"
 	],
 	"devDependencies": {
-		"ava": "*",
+		"ava": "^1.4.1",
 		"rewire": "^4.0.1",
-		"xo": "*"
+		"tsd": "^0.7.2",
+		"xo": "^0.24.0"
 	}
 }
