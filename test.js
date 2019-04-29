@@ -7,7 +7,7 @@ const MOCK_HOME = 'MOCK_HOME';
 const expandsTildePrefixWithHome = path => untildify(path) === MOCK_HOME + path.slice(1);
 
 // Mock out the home directory for more accurate and explicit tests
-test.beforeEach(() => untildify.__set__('home', MOCK_HOME));
+test.beforeEach(() => untildify.__set__('homeDirectory', MOCK_HOME));
 
 test('operation with home directory', t => {
 	t.not(untildify('~'), '~');
@@ -24,7 +24,7 @@ test('operation with home directory', t => {
 });
 
 test('operation without home directory', t => {
-	untildify.__set__('home', undefined);
+	untildify.__set__('homeDirectory', undefined);
 	t.is(untildify('~'), '~');
 	t.is(untildify('foo'), 'foo');
 	t.is(untildify('~abc'), '~abc');
