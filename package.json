@@ -1,6 +1,6 @@
 {
 	"name": "untildify",
-	"version": "3.0.3",
+	"version": "4.0.0",
 	"description": "Convert a tilde path to an absolute path: `~/dev` → `/Users/sindresorhus/dev`",
 	"license": "MIT",
 	"repository": "sindresorhus/untildify",
