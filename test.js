@@ -1,13 +1,17 @@
-import {serial as test} from 'ava';
-import rewire from 'rewire';
+import test from 'ava';
+import esmock from 'esmock';
 
-const untildify = rewire('.');
 const MOCK_HOME = 'MOCK_HOME';
 
-const expandsTildePrefixWithHome = path => untildify(path) === MOCK_HOME + path.slice(1);
+const create = async homeDirectory => esmock('./index.js', {
+	os: {
+		homedir: () => homeDirectory,
+	},
+});
 
-// Mock out the home directory for more accurate and explicit tests
-test.beforeEach(() => untildify.__set__('homeDirectory', MOCK_HOME));
+const untildify = await create(MOCK_HOME);
+
+const expandsTildePrefixWithHome = path => untildify(path) === MOCK_HOME + path.slice(1);
 
 test('operation with home directory', t => {
 	t.not(untildify('~'), '~');
@@ -23,8 +27,8 @@ test('operation with home directory', t => {
 	t.true(expandsTildePrefixWithHome('~\\abc/def'));
 });
 
-test('operation without home directory', t => {
-	untildify.__set__('homeDirectory', undefined);
+test('operation without home directory', async t => {
+	const untildify = await create(undefined);
 	t.is(untildify('~'), '~');
 	t.is(untildify('foo'), 'foo');
 	t.is(untildify('~abc'), '~abc');

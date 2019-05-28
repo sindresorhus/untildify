@@ -3,12 +3,10 @@ Convert a tilde path to an absolute path: `~/dev` → `/Users/sindresorhus/dev`.
 
 @example
 ```
-import untildify = require('untildify');
+import untildify from 'untildify';
 
 untildify('~/dev');
 //=> '/Users/sindresorhus/dev'
 ```
 */
-declare function untildify(pathWithTilde: string): string;
-
-export = untildify;
+export default function untildify(pathWithTilde: string): string;

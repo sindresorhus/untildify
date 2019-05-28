@@ -1,4 +1,4 @@
 import {expectType} from 'tsd';
-import untildify = require('.');
+import untildify from './index.js';
 
 expectType<string>(untildify('~/dev'));
