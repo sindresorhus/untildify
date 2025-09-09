@@ -21,11 +21,11 @@ test('operation with home directory', t => {
 	t.true(expandsTildePrefixWithHome('~/'));
 	t.true(expandsTildePrefixWithHome('~\\'));
 	t.true(expandsTildePrefixWithHome('~/abc'));
-	t.true(expandsTildePrefixWithHome('~\\abc'));
+	t.true(expandsTildePrefixWithHome(String.raw`~\abc`));
 	t.true(expandsTildePrefixWithHome('~/abc/def'));
-	t.true(expandsTildePrefixWithHome('~\\abc\\def'));
-	t.true(expandsTildePrefixWithHome('~/abc\\def'));
-	t.true(expandsTildePrefixWithHome('~\\abc/def'));
+	t.true(expandsTildePrefixWithHome(String.raw`~\abc\def`));
+	t.true(expandsTildePrefixWithHome(String.raw`~/abc\def`));
+	t.true(expandsTildePrefixWithHome(String.raw`~\abc/def`));
 });
 
 test('operation without home directory', async t => {
