@@ -1,3 +1,4 @@
+import os from 'node:os';
 import test from 'ava';
 import esmock from 'esmock';
 
@@ -48,4 +49,54 @@ test('paths with regex replacement patterns', t => {
 	t.is(untildify('~$1'), '~$1');
 	t.true(expandsTildePrefixWithHome('~/$1'));
 	t.true(expandsTildePrefixWithHome('~/$&'));
+});
+
+// Tests for ~user expansion
+test('~user expansion for current user', async t => {
+	// Use the actual untildify function without mocking for this test
+	const {default: realUntildify} = await import('./index.js');
+	const currentUser = os.userInfo().username;
+	const currentHome = os.homedir();
+
+	// ~currentuser should expand to current user's home
+	t.is(realUntildify(`~${currentUser}`), currentHome);
+	t.is(realUntildify(`~${currentUser}/`), `${currentHome}/`);
+	t.is(realUntildify(`~${currentUser}/dev`), `${currentHome}/dev`);
+});
+
+test('~user expansion for other users', async t => {
+	// Use the actual untildify function without mocking for this test
+	const {default: realUntildify} = await import('./index.js');
+
+	// Other users should return unchanged (simplified implementation)
+	t.is(realUntildify('~root'), '~root');
+	t.is(realUntildify('~root/'), '~root/');
+	t.is(realUntildify('~otheruser/test'), '~otheruser/test');
+});
+
+test('~user expansion for non-existent users', async t => {
+	// Use the actual untildify function without mocking for this test
+	const {default: realUntildify} = await import('./index.js');
+
+	// Non-existent users should return unchanged
+	t.is(realUntildify('~nonexistentuser123'), '~nonexistentuser123');
+	t.is(realUntildify('~nonexistentuser123/'), '~nonexistentuser123/');
+	t.is(realUntildify('~nonexistentuser123/dev'), '~nonexistentuser123/dev');
+});
+
+test('~user expansion edge cases', async t => {
+	// Use the actual untildify function without mocking for this test
+	const {default: realUntildify} = await import('./index.js');
+
+	// Should not expand if not at the beginning
+	t.is(realUntildify('foo~bar'), 'foo~bar');
+	t.is(realUntildify('/~user'), '/~user');
+	t.is(realUntildify('abc~def/ghi'), 'abc~def/ghi');
+
+	// Empty username after ~ (just ~ alone should still work)
+	t.is(realUntildify('~'), os.homedir());
+
+	// Username containing special characters that don't typically appear in usernames
+	t.is(realUntildify('~user!!invalid'), '~user!!invalid');
+	t.is(realUntildify('~user@host'), '~user@host');
 });
